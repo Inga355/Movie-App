@@ -22,6 +22,9 @@ def main():
     while True:
         print_menu()
         user_main_choice = get_main_choice()
+        if user_main_choice == 0:
+            print("Bye!")
+            break
         handle_user_choice(user_main_choice, movies)
 
 
