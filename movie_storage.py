@@ -28,7 +28,7 @@ def save_movies(movies):
     print(f"Movies data has been saved to {FILENAME}")
 
 
-def add_movie(title, year, rating):
+def add_movie_to_storage(title, year, rating):
     """
     Adds a movie to the movies database.
     Loads the information from the JSON file, adds the movie
@@ -40,7 +40,7 @@ def add_movie(title, year, rating):
     print(f"The movie '{title}' has been added to the database.")
 
 
-def delete_movie(title):
+def delete_movie_in_storage(title):
     """
     Deletes a movie from the movies database.
     Loads the information from the JSON file, deletes the movie
@@ -55,7 +55,7 @@ def delete_movie(title):
         print(f"ERROR! The movie '{title}' does not exist in the database.")
 
 
-def update_movie(title, rating):
+def update_movie_in_storage(title, rating):
     """
     Updates a movie from the movies database.
     Loads the information from the JSON file, updates the movie
