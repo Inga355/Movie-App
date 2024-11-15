@@ -32,6 +32,7 @@ def main():
 def print_menu():
     print("")
     print("Menu:")
+    print("0. Exit")
     print("1. List movies")
     print("2. Add movie")
     print("3. Delete movie")
