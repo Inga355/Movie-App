@@ -2,6 +2,9 @@ import random
 
 
 def main():
+    """
+    Main function that initializes the movie database and starts the menu loop.
+    """
     # Dictionary to store the movies and the rating
     movies = {
         "The Shawshank Redemption": [9.5, 1994],
@@ -28,8 +31,10 @@ def main():
         handle_user_choice(user_main_choice, movies)
 
 
-# Prints the main-menu
 def print_menu():
+    """
+    Prints the main menu options.
+    """
     print("")
     print("Menu:")
     print("0. Exit")
@@ -44,14 +49,23 @@ def print_menu():
     print("")
 
 
-# Gets the user choice for main-menu
 def get_main_choice():
+    """
+    Prompts the user to enter a choice from the main menu.
+
+    :return: int: The user's choice as an integer.
+    """
     user_main_choice = int(input("Enter choice (0-10): "))
     return user_main_choice
 
 
-# Handles user choice
 def handle_user_choice(choice, movie_dictionary):
+    """
+    Handles the user's choice from the main menu and calls the appropriate function.
+
+    :param choice: (int): The user's menu choice.
+    :param movie_dictionary: (dict): The dictionary containing movie data.
+    """
     if choice == 1:
         list_movies(movie_dictionary)
     elif choice == 2:
@@ -72,10 +86,13 @@ def handle_user_choice(choice, movie_dictionary):
     else:
         print("Wrong number, please choose again!")
 
-    # Choice 1: prints out all moviesy
-
 
 def list_movies(movie_dictionary):
+    """
+    Prints a list of all movies and their details.
+
+    :param movie_dictionary: (dict) The dictionary containing movie data.
+    """
     total_movies = len(movie_dictionary)
     print("")
     print(f"{total_movies} movies in total")
@@ -84,8 +101,12 @@ def list_movies(movie_dictionary):
         print(f"{key} ({value[1]}): {value[0]}")
 
 
-# Choice 2: Adds a movie
 def add_movie(movie_dictionary):
+    """
+    Adds a new movie to the dictionary.
+
+    :param movie_dictionary: (dict) The dictionary containing movie data.
+    """
     movie_name = input("Please enter a movie name: ")
     movie_rating = float(input("Please enter the movie's rating: "))
     movie_year = int(input("Please enter the year of release: "))
@@ -93,8 +114,12 @@ def add_movie(movie_dictionary):
     print(f"The movie '{movie_name}' was added.")
 
 
-# Choice 3: Deletes a movie
 def delete_movie(movie_dictionary):
+    """
+    Deletes a movie from the dictionary.
+
+    :param movie_dictionary: (dict) The dictionary containing movie data.
+    """
     movie_name = input("Please enter the name of the movie you want to delete: ")
     movie_value = movie_dictionary.pop(movie_name, None)
     print(f"The movie '{movie_name}' was deleted.")
@@ -102,8 +127,11 @@ def delete_movie(movie_dictionary):
         print(f"ERROR! The movie '{movie_name}' does not exists!")
 
 
-# Choice 4: Updates a movie
 def update_movie(movie_dictionary):
+    """
+    Updates the details of an existing movie in the dictionary.
+    :param movie_dictionary: (dict) The dictionary containing movie data.
+    """
     movie_name = input("Which movie do you want to update? Please enter the name: ")
     if movie_name in movie_dictionary:
         new_rating = float(input("Please enter the new rating: "))
@@ -114,8 +142,11 @@ def update_movie(movie_dictionary):
         print(f"ERROR! The movie '{movie_name}' does not exists!")
 
 
-# Choice 5: Shows stats: average rating, median rating, best movie, worst movie
 def show_stats(movie_dictionary):
+    """
+    Displays statistics about the movies.
+    :param movie_dictionary: (dict) The dictionary containing movie data.
+    """
     print("")
     """Average rating"""
     average_rating = sum(movie[0] for movie in movie_dictionary.values()) / len(movie_dictionary)
@@ -141,8 +172,11 @@ def show_stats(movie_dictionary):
     print(f"The worst movie(s) are {', '.join(worst_movies)} with a rating of {min_rating}.")
 
 
-# Choice 6: Gives back a random movie
 def random_choice(movie_dictionary):
+    """
+    Selects a random movie from the dictionary and displays its details.
+    :param movie_dictionary: (dict) The dictionary containing movie data.
+    """
     keys_list = list(movie_dictionary.keys())
     r_choice_name = random.choice(keys_list)
     r_choice_rating = movie_dictionary[r_choice_name][0]
@@ -150,8 +184,12 @@ def random_choice(movie_dictionary):
     print(f"Your random choice is: '{r_choice_name}' from {r_choice_year}. It's rated with {r_choice_rating}.")
 
 
-# Choice 7: Search movie
 def search_movie(movie_dictionary, search_term):
+    """
+    Searches for movies that contain the given search term in their title.
+    :param movie_dictionary: (dict) The dictionary containing movie data.
+    :param search_term: (str) The term to search for in movie titles.
+    """
     search_term_lower = search_term.lower()
     search_result = [movie for movie in movie_dictionary if search_term_lower in movie.lower()]
     if search_result:
@@ -161,8 +199,11 @@ def search_movie(movie_dictionary, search_term):
         print("Movie not found")
 
 
-# Choice 8: Shows movies sorted by ranking
 def sorted_movies(movie_dictionary):
+    """
+    Displays the movies sorted by their rating.
+    :param movie_dictionary: (dict) The dictionary containing movie data.
+    """
     sorted_mov = sorted(movie_dictionary.items(), key=lambda item: item[1][0], reverse=True)
     for movie, details in sorted_mov:
         print(f"{movie}: Rating: {details[0]}, Year: {details[1]}")
