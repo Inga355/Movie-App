@@ -1,12 +1,12 @@
 import random
-import movie_storage
+from movie_storage import get_movies, save_movies, add_movie, delete_movie, update_movie
 
 
 def main():
     """
     Main function that initializes the movie database and starts the menu loop.
     """
-    movies = movie_storage.get_movies()
+    movies = get_movies()
 
     print("********** My Movies Database **********")
 
@@ -42,8 +42,15 @@ def get_main_choice():
     Prompts the user to enter a choice from the main menu.
     :return: int: The user's choice as an integer.
     """
-    user_main_choice = int(input("Enter choice (0-10): "))
-    return user_main_choice
+    while True:
+        try:
+            user_main_choice = int(input("Enter choice (0-10): "))
+            if 0 <= user_main_choice <= 10:
+                return user_main_choice
+            else:
+                print("Please enter a number between 0 and 10!")
+        except ValueError:
+            print("Invalid input. Please enter a number between 0 and 10!")
 
 
 def handle_user_choice(choice, movie_dictionary):
