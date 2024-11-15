@@ -19,7 +19,7 @@ def main():
         "Star Wars: Episode V": [8.7, 1980]
     }
 
-    # Your code here
+
     print("********** My Movies Database **********")
 
     while True:
@@ -52,7 +52,6 @@ def print_menu():
 def get_main_choice():
     """
     Prompts the user to enter a choice from the main menu.
-
     :return: int: The user's choice as an integer.
     """
     user_main_choice = int(input("Enter choice (0-10): "))
@@ -62,7 +61,6 @@ def get_main_choice():
 def handle_user_choice(choice, movie_dictionary):
     """
     Handles the user's choice from the main menu and calls the appropriate function.
-
     :param choice: (int): The user's menu choice.
     :param movie_dictionary: (dict): The dictionary containing movie data.
     """
@@ -90,7 +88,6 @@ def handle_user_choice(choice, movie_dictionary):
 def list_movies(movie_dictionary):
     """
     Prints a list of all movies and their details.
-
     :param movie_dictionary: (dict) The dictionary containing movie data.
     """
     total_movies = len(movie_dictionary)
@@ -104,7 +101,6 @@ def list_movies(movie_dictionary):
 def add_movie(movie_dictionary):
     """
     Adds a new movie to the dictionary.
-
     :param movie_dictionary: (dict) The dictionary containing movie data.
     """
     movie_name = input("Please enter a movie name: ")
@@ -117,7 +113,6 @@ def add_movie(movie_dictionary):
 def delete_movie(movie_dictionary):
     """
     Deletes a movie from the dictionary.
-
     :param movie_dictionary: (dict) The dictionary containing movie data.
     """
     movie_name = input("Please enter the name of the movie you want to delete: ")
