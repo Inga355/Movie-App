@@ -45,7 +45,7 @@ def print_menu():
 
 # Gets the user choice for main-menu
 def get_main_choice():
-    user_main_choice = int(input("Enter choice (1-8): "))
+    user_main_choice = int(input("Enter choice (0-10): "))
     return user_main_choice
 
 
