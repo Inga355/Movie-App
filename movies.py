@@ -1,24 +1,12 @@
 import random
+import movie_storage
 
 
 def main():
     """
     Main function that initializes the movie database and starts the menu loop.
     """
-    # Dictionary to store the movies and the rating
-    movies = {
-        "The Shawshank Redemption": [9.5, 1994],
-        "Pulp Fiction": [8.8, 1994],
-        "The Room": [3.6, 2003],
-        "The Godfather": [9.2, 1972],
-        "The Godfather: Part II": [9.0, 1974],
-        "The Dark Knight": [9.0, 2008],
-        "12 Angry Men": [8.9, 2022],
-        "Everything Everywhere All At Once": [8.9, 1994],
-        "Forrest Gump": [8.8, 1994],
-        "Star Wars: Episode V": [8.7, 1980]
-    }
-
+    movies = movie_storage.get_movies()
 
     print("********** My Movies Database **********")
 
