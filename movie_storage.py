@@ -3,6 +3,7 @@ import json
 # Name der JSON-Datei
 FILENAME = 'movies.json'
 
+
 def get_movies():
     """
     Returns a dictionary of lists that
@@ -28,13 +29,15 @@ def save_movies(movies):
     print(f"Movies data has been saved to {FILENAME}")
 
 
-def add_movie_to_storage(title, year, rating):
+def add_movie():
     """
-    Adds a movie to the movies database.
-    Loads the information from the JSON file, adds the movie
-    and saves it.
+    Gets input from User for adding a new movie to the dictionary
+    and saves the data in JSON file
     """
     movies = get_movies()
+    title = input("Please enter a movie name: ")
+    rating = float(input("Please enter the movie's rating: "))
+    year = int(input("Please enter the year of release: "))
     movies[title] = [rating, year]
     save_movies(movies)
     print(f"The movie '{title}' has been added to the database.")

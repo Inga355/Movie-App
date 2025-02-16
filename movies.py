@@ -1,24 +1,8 @@
 import random
-from movie_storage import get_movies, save_movies, add_movie, delete_movie, update_movie
+from movie_storage import get_movies, add_movie, save_movies, delete_movie_in_storage, update_movie_in_storage
 
 
-def main():
-    """
-    Main function that initializes the movie database and starts the menu loop.
-    """
-    movies = get_movies()
-
-    print("********** My Movies Database **********")
-
-    while True:
-        print_menu()
-        user_main_choice = get_main_choice()
-        if user_main_choice == 0:
-            print("Bye!")
-            break
-        handle_user_choice(user_main_choice, movies)
-
-
+# Display Menue and handle User-Input
 def print_menu():
     """
     Prints the main menu options.
@@ -62,7 +46,7 @@ def handle_user_choice(choice, movie_dictionary):
     if choice == 1:
         list_movies(movie_dictionary)
     elif choice == 2:
-        add_movie(movie_dictionary)
+        add_movie()
     elif choice == 3:
         delete_movie(movie_dictionary)
     elif choice == 4:
@@ -80,6 +64,7 @@ def handle_user_choice(choice, movie_dictionary):
         print("Wrong number, please choose again!")
 
 
+# Functions to handle User Choice
 def list_movies(movie_dictionary):
     """
     Prints a list of all movies and their details.
@@ -93,16 +78,7 @@ def list_movies(movie_dictionary):
         print(f"{key} ({value[1]}): {value[0]}")
 
 
-def add_movie(movie_dictionary):
-    """
-    Adds a new movie to the dictionary.
-    :param movie_dictionary: (dict) The dictionary containing movie data.
-    """
-    movie_name = input("Please enter a movie name: ")
-    movie_rating = float(input("Please enter the movie's rating: "))
-    movie_year = int(input("Please enter the year of release: "))
-    movie_dictionary[movie_name] = [movie_rating, movie_year]
-    print(f"The movie '{movie_name}' was added.")
+
 
 
 def delete_movie(movie_dictionary):
@@ -197,6 +173,24 @@ def sorted_movies(movie_dictionary):
     sorted_mov = sorted(movie_dictionary.items(), key=lambda item: item[1][0], reverse=True)
     for movie, details in sorted_mov:
         print(f"{movie}: Rating: {details[0]}, Year: {details[1]}")
+
+
+# Main Function
+def main():
+    """
+    Main function that initializes the movie database and starts the menu loop.
+    """
+    movies = get_movies()
+
+    print("********** My Movies Database **********")
+
+    while True:
+        print_menu()
+        user_main_choice = get_main_choice()
+        if user_main_choice == 0:
+            print("Bye!")
+            break
+        handle_user_choice(user_main_choice, movies)
 
 
 if __name__ == "__main__":
