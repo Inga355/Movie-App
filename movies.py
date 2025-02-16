@@ -2,7 +2,7 @@ import random
 from movie_storage import get_movies, add_movie, list_movies, delete_movie, update_movie
 
 
-# Display Menue and handle User-Input
+# Display Menu and handle User-Input
 def print_menu():
     """
     Prints the main menu options.
@@ -52,9 +52,9 @@ def handle_user_choice(choice, movie_dictionary):
     elif choice == 4:
         update_movie()
     elif choice == 5:
-        show_stats(movie_dictionary)
+        show_stats()
     elif choice == 6:
-        random_choice(movie_dictionary)
+        random_choice()
     elif choice == 7:
         search_term = input("Enter a part of a movie name: ")
         search_movie(movie_dictionary, search_term)
@@ -65,18 +65,19 @@ def handle_user_choice(choice, movie_dictionary):
 
 
 # Functions to analyse stats
-def show_stats(movie_dictionary):
+def show_stats():
     """
     Displays statistics about the movies.
     :param movie_dictionary: (dict) The dictionary containing movie data.
     """
+    movies = get_movies()
     print("")
     """Average rating"""
-    average_rating = sum(movie[0] for movie in movie_dictionary.values()) / len(movie_dictionary)
+    average_rating = sum(movie[0] for movie in movies.values()) / len(movies)
     print(f"The average rating is: {average_rating}")
 
     """Median rating"""
-    ratings = sorted(movie[0] for movie in movie_dictionary.values())
+    ratings = sorted(movie[0] for movie in movies.values())
     n = len(ratings)
     if n % 2 == 0:
         median = (ratings[n // 2 - 1] + ratings[n // 2]) / 2
@@ -85,25 +86,25 @@ def show_stats(movie_dictionary):
     print(f"The median rating is: {median}")
 
     """Best movie"""
-    max_rating = max(movie[0] for movie in movie_dictionary.values())
-    top_movies = [movie for movie, details in movie_dictionary.items() if details[0] == max_rating]
+    max_rating = max(movie[0] for movie in movies.values())
+    top_movies = [movie for movie, details in movies.items() if details[0] == max_rating]
     print(f"The top movie(s) are {', '.join(top_movies)} with a rating of {max_rating}.")
 
     """Worst movie"""
-    min_rating = min(movie[0] for movie in movie_dictionary.values())
-    worst_movies = [movie for movie, details in movie_dictionary.items() if details[0] == min_rating]
+    min_rating = min(movie[0] for movie in movies.values())
+    worst_movies = [movie for movie, details in movies.items() if details[0] == min_rating]
     print(f"The worst movie(s) are {', '.join(worst_movies)} with a rating of {min_rating}.")
 
 
-def random_choice(movie_dictionary):
+def random_choice():
     """
     Selects a random movie from the dictionary and displays its details.
-    :param movie_dictionary: (dict) The dictionary containing movie data.
     """
-    keys_list = list(movie_dictionary.keys())
+    movies = get_movies()
+    keys_list = list(movies.keys())
     r_choice_name = random.choice(keys_list)
-    r_choice_rating = movie_dictionary[r_choice_name][0]
-    r_choice_year = movie_dictionary[r_choice_name][1]
+    r_choice_rating = movies[r_choice_name][0]
+    r_choice_year = movies[r_choice_name][1]
     print(f"Your random choice is: '{r_choice_name}' from {r_choice_year}. It's rated with {r_choice_rating}.")
 
 
