@@ -41,6 +41,7 @@ def list_movies():
     for key, value in movies.items():
         print(f"{key} ({value[1]}): {value[0]}")
 
+
 def add_movie():
     """
     Gets input from User for adding a new movie to the dictionary
@@ -55,13 +56,12 @@ def add_movie():
     print(f"The movie '{title}' has been added to the database.")
 
 
-def delete_movie_in_storage(title):
+def delete_movie():
     """
-    Deletes a movie from the movies database.
-    Loads the information from the JSON file, deletes the movie
-    and saves it.
+    Gets user input and deletes movie from the dictionary.
     """
     movies = get_movies()
+    title = input("Please enter the name of the movie you want to delete: ")
     if title in movies:
         del movies[title]
         save_movies(movies)

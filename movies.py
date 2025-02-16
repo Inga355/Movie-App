@@ -1,5 +1,5 @@
 import random
-from movie_storage import get_movies, add_movie, list_movies
+from movie_storage import get_movies, add_movie, list_movies, delete_movie
 
 
 # Display Menue and handle User-Input
@@ -48,7 +48,7 @@ def handle_user_choice(choice, movie_dictionary):
     elif choice == 2:
         add_movie()
     elif choice == 3:
-        delete_movie(movie_dictionary)
+        delete_movie()
     elif choice == 4:
         update_movie(movie_dictionary)
     elif choice == 5:
@@ -68,16 +68,7 @@ def handle_user_choice(choice, movie_dictionary):
 
 
 
-def delete_movie(movie_dictionary):
-    """
-    Deletes a movie from the dictionary.
-    :param movie_dictionary: (dict) The dictionary containing movie data.
-    """
-    movie_name = input("Please enter the name of the movie you want to delete: ")
-    movie_value = movie_dictionary.pop(movie_name, None)
-    print(f"The movie '{movie_name}' was deleted.")
-    if movie_value is None:
-        print(f"ERROR! The movie '{movie_name}' does not exists!")
+
 
 
 def update_movie(movie_dictionary):
