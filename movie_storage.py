@@ -29,6 +29,18 @@ def save_movies(movies):
     print(f"Movies data has been saved to {FILENAME}")
 
 
+def list_movies():
+    """
+    Prints a list of all movies and their details.
+    """
+    movies = get_movies()
+    total_movies = len(movies)
+    print("")
+    print(f"{total_movies} movies in total")
+    print("")
+    for key, value in movies.items():
+        print(f"{key} ({value[1]}): {value[0]}")
+
 def add_movie():
     """
     Gets input from User for adding a new movie to the dictionary

@@ -1,5 +1,5 @@
 import random
-from movie_storage import get_movies, add_movie, save_movies, delete_movie_in_storage, update_movie_in_storage
+from movie_storage import get_movies, add_movie, list_movies
 
 
 # Display Menue and handle User-Input
@@ -44,7 +44,7 @@ def handle_user_choice(choice, movie_dictionary):
     :param movie_dictionary: (dict): The dictionary containing movie data.
     """
     if choice == 1:
-        list_movies(movie_dictionary)
+        list_movies()
     elif choice == 2:
         add_movie()
     elif choice == 3:
@@ -65,19 +65,6 @@ def handle_user_choice(choice, movie_dictionary):
 
 
 # Functions to handle User Choice
-def list_movies(movie_dictionary):
-    """
-    Prints a list of all movies and their details.
-    :param movie_dictionary: (dict) The dictionary containing movie data.
-    """
-    total_movies = len(movie_dictionary)
-    print("")
-    print(f"{total_movies} movies in total")
-    print("")
-    for key, value in movie_dictionary.items():
-        print(f"{key} ({value[1]}): {value[0]}")
-
-
 
 
 
