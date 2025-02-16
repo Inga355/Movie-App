@@ -37,11 +37,10 @@ def get_main_choice():
             print("Invalid input. Please enter a number between 0 and 10!")
 
 
-def handle_user_choice(choice, movie_dictionary):
+def handle_user_choice(choice):
     """
     Handles the user's choice from the main menu and calls the appropriate function.
     :param choice: (int): The user's menu choice.
-    :param movie_dictionary: (dict): The dictionary containing movie data.
     """
     if choice == 1:
         list_movies()
@@ -63,11 +62,10 @@ def handle_user_choice(choice, movie_dictionary):
         print("Wrong number, please choose again!")
 
 
-# Functions to analyse stats
+# Functions to analyse stats and providing infos on stored movies
 def show_stats():
     """
     Displays statistics about the movies.
-    :param movie_dictionary: (dict) The dictionary containing movie data.
     """
     movies = get_movies()
     print("")
@@ -110,8 +108,6 @@ def random_choice():
 def search_movie():
     """
     Searches for movies that contain the given search term in their title.
-    :param movie_dictionary: (dict) The dictionary containing movie data.
-    :param search_term: (str) The term to search for in movie titles.
     """
     movies = get_movies()
     search_term = input("Enter a part of a movie name: ")
@@ -137,10 +133,8 @@ def sorted_movies():
 # Main Function
 def main():
     """
-    Main function that initializes the movie database and starts the menu loop.
+    Main function that initializes the menu loop and managed the user Choice.
     """
-    movies = get_movies()
-
     print("********** My Movies Database **********")
 
     while True:
@@ -149,7 +143,7 @@ def main():
         if user_main_choice == 0:
             print("Bye!")
             break
-        handle_user_choice(user_main_choice, movies)
+        handle_user_choice(user_main_choice)
 
 
 if __name__ == "__main__":
