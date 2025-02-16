@@ -58,7 +58,7 @@ def handle_user_choice(choice, movie_dictionary):
     elif choice == 7:
         search_movie()
     elif choice == 8:
-        sorted_movies(movie_dictionary)
+        sorted_movies()
     else:
         print("Wrong number, please choose again!")
 
@@ -124,12 +124,12 @@ def search_movie():
         print("Movie not found")
 
 
-def sorted_movies(movie_dictionary):
+def sorted_movies():
     """
     Displays the movies sorted by their rating.
-    :param movie_dictionary: (dict) The dictionary containing movie data.
     """
-    sorted_mov = sorted(movie_dictionary.items(), key=lambda item: item[1][0], reverse=True)
+    movies = get_movies()
+    sorted_mov = sorted(movies.items(), key=lambda item: item[1][0], reverse=True)
     for movie, details in sorted_mov:
         print(f"{movie}: Rating: {details[0]}, Year: {details[1]}")
 
