@@ -1,5 +1,5 @@
 import random
-from movie_storage import get_movies, add_movie, list_movies, delete_movie
+from movie_storage import get_movies, add_movie, list_movies, delete_movie, update_movie
 
 
 # Display Menue and handle User-Input
@@ -50,7 +50,7 @@ def handle_user_choice(choice, movie_dictionary):
     elif choice == 3:
         delete_movie()
     elif choice == 4:
-        update_movie(movie_dictionary)
+        update_movie()
     elif choice == 5:
         show_stats(movie_dictionary)
     elif choice == 6:
@@ -64,28 +64,7 @@ def handle_user_choice(choice, movie_dictionary):
         print("Wrong number, please choose again!")
 
 
-# Functions to handle User Choice
-
-
-
-
-
-
-def update_movie(movie_dictionary):
-    """
-    Updates the details of an existing movie in the dictionary.
-    :param movie_dictionary: (dict) The dictionary containing movie data.
-    """
-    movie_name = input("Which movie do you want to update? Please enter the name: ")
-    if movie_name in movie_dictionary:
-        new_rating = float(input("Please enter the new rating: "))
-        new_year = int(input("Please enter the new year of release: "))
-        movie_dictionary[movie_name] = [new_rating, new_year]
-        print(f"The movie '{movie_name}' was updated.")
-    else:
-        print(f"ERROR! The movie '{movie_name}' does not exists!")
-
-
+# Functions to analyse stats
 def show_stats(movie_dictionary):
     """
     Displays statistics about the movies.
