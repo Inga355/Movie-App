@@ -56,8 +56,7 @@ def handle_user_choice(choice, movie_dictionary):
     elif choice == 6:
         random_choice()
     elif choice == 7:
-        search_term = input("Enter a part of a movie name: ")
-        search_movie(movie_dictionary, search_term)
+        search_movie()
     elif choice == 8:
         sorted_movies(movie_dictionary)
     else:
@@ -108,17 +107,19 @@ def random_choice():
     print(f"Your random choice is: '{r_choice_name}' from {r_choice_year}. It's rated with {r_choice_rating}.")
 
 
-def search_movie(movie_dictionary, search_term):
+def search_movie():
     """
     Searches for movies that contain the given search term in their title.
     :param movie_dictionary: (dict) The dictionary containing movie data.
     :param search_term: (str) The term to search for in movie titles.
     """
+    movies = get_movies()
+    search_term = input("Enter a part of a movie name: ")
     search_term_lower = search_term.lower()
-    search_result = [movie for movie in movie_dictionary if search_term_lower in movie.lower()]
+    search_result = [movie for movie in movies if search_term_lower in movie.lower()]
     if search_result:
         for movie in search_result:
-            print(f"{movie},  Rating: {movie_dictionary[movie][0]}, Year: {movie_dictionary[movie][1]}")
+            print(f"{movie},  Rating: {movies[movie][0]}, Year: {movies[movie][1]}")
     else:
         print("Movie not found")
 
