@@ -4,7 +4,7 @@ import json
 FILENAME = 'movies.json'
 
 
-def get_movies():
+def get_movies(filepath):
     """
     Returns a dictionary of lists that
     contains the movies information in the database.
@@ -13,7 +13,7 @@ def get_movies():
     file and returns the data.
     """
     try:
-        with open(FILENAME, 'r') as json_file:
+        with open(filepath, 'r') as json_file:
             movies = json.load(json_file)
         return movies
     except FileNotFoundError:
@@ -21,13 +21,13 @@ def get_movies():
         return {}
 
 
-def save_movies(movies):
+def save_movies(movies, filepath):
     """
     Gets all movies as an argument and saves them to the JSON file.
     """
-    with open(FILENAME, 'w') as json_file:
+    with open(filepath, 'w') as json_file:
         json.dump(movies, json_file, indent=4)
-    print(f"Movies data has been saved to {FILENAME}")
+    print(f"Movies data has been saved to {filepath}")
 
 
 def list_movies():
