@@ -43,16 +43,13 @@ def list_movies():
         print(f"{key} ({value[1]}): {value[0]}")
 
 
-def add_movie():
+def add_movie(title, rating, year):
     """
     Adds a movie to the movies database
     Loads the dictionary from the JSON, gets user input,
     adds the movie and saves it in JSON
     """
     movies = get_movies()
-    title = input("Please enter a movie name: ")
-    rating = float(input("Please enter the movie's rating: "))
-    year = int(input("Please enter the year of release: "))
     movies[title] = [rating, year]
     save_movies(movies)
     print(f"The movie '{title}' has been added to the database.")

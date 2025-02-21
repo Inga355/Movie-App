@@ -45,7 +45,10 @@ def handle_user_choice(choice):
     if choice == 1:
         list_movies()
     elif choice == 2:
-        add_movie()
+        title = input("Please enter a movie name: ")
+        rating = float(input("Please enter the movie's rating: "))
+        year = int(input("Please enter the year of release: "))
+        add_movie(title, rating, year)
     elif choice == 3:
         delete_movie()
     elif choice == 4:
