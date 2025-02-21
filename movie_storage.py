@@ -17,6 +17,7 @@ def get_movies():
             movies = json.load(json_file)
         return movies
     except FileNotFoundError:
+        print('No data in database.')
         return {}
 
 
