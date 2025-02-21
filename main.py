@@ -1,6 +1,5 @@
-from storage_json import StorageJson
+from storage_csv import StorageCsv
 from movie_app import MovieApp
-
 
 
 def print_menu():
@@ -40,8 +39,8 @@ def get_main_choice():
 def handle_user_choice(choice, movie_app_instance):
     """
     Handles the user's choice from the main menu and calls the appropriate function.
-    :param choice (int): The user's menu choice.
-    :param movie_app_instance (MovieApp): The movie app instance handling the operations.
+    :param choice: (int) The user's menu choice.
+    :param movie_app_instance: (MovieApp) The movie app instance handling the operations.
     """
     if choice == 1:
         movie_app_instance._command_list_movies()
@@ -73,19 +72,12 @@ def handle_user_choice(choice, movie_app_instance):
 # Main Function
 def main():
     """
-    Main function that initializes the menu loop and managed the user Choice.
+    Initializes and runs the MovieApp.
     """
     print("********** My Movies Database **********")
-    storage = StorageJson('movies.json')
+    storage = StorageCsv('movies.csv')
     movie_app = MovieApp(storage)
-
-    while True:
-        print_menu()
-        user_main_choice = get_main_choice()
-        if user_main_choice == 0:
-            print("Bye!")
-            break
-        handle_user_choice(user_main_choice, movie_app)
+    movie_app.run()
 
 
 if __name__ == "__main__":
