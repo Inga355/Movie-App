@@ -70,16 +70,14 @@ def delete_movie(title):
         print(f"ERROR! The movie '{title}' does not exist in the database.")
 
 
-def update_movie():
+def update_movie(title, rating):
     """
     Updates a movie from the movies database.
     Loads the dictionary from the JSON file, gets user input,
     updates the movie and saves it in JSON
     """
     movies = get_movies()
-    title = input("Which movie do you want to update? Please enter the name: ")
     if title in movies:
-        rating = float(input("Please enter the new rating: "))
         movies[title][0] = rating
         save_movies(movies)
         print(f"The movie '{title}' has been updated with a new rating.")

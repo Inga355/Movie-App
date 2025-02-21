@@ -53,7 +53,9 @@ def handle_user_choice(choice):
         title = input("Please enter the name of the movie you want to delete: ")
         delete_movie(title)
     elif choice == 4:
-        update_movie()
+        title = input("Which movie do you want to update? Please enter the name: ")
+        rating = float(input("Please enter the new rating: "))
+        update_movie(title, rating)
     elif choice == 5:
         show_stats()
     elif choice == 6:
