@@ -55,14 +55,13 @@ def add_movie(title, rating, year):
     print(f"The movie '{title}' has been added to the database.")
 
 
-def delete_movie():
+def delete_movie(title):
     """
     Deletes a movie from the movies database
     Loads the dictionary from the JSON, gets user input,
     deletes the movie and saves it in JSON
     """
     movies = get_movies()
-    title = input("Please enter the name of the movie you want to delete: ")
     if title in movies:
         del movies[title]
         save_movies(movies)

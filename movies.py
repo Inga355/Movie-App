@@ -50,7 +50,8 @@ def handle_user_choice(choice):
         year = int(input("Please enter the year of release: "))
         add_movie(title, rating, year)
     elif choice == 3:
-        delete_movie()
+        title = input("Please enter the name of the movie you want to delete: ")
+        delete_movie(title)
     elif choice == 4:
         update_movie()
     elif choice == 5:
