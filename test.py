@@ -1,4 +1,5 @@
 from storage_json import StorageJson
+from movie_app import MovieApp
 
 storage = StorageJson('movies.json')
 print(storage.list_movies())
@@ -9,3 +10,5 @@ print(storage.list_movies())
 storage.delete_movie('Hello World')
 print(storage.list_movies())
 print('Test solved')
+#movie_app = MovieApp(storage)
+#movie_app.run()

@@ -1,6 +1,31 @@
 from istorage import IStorage
 import json
-from movie_storage import get_movies, save_movies
+
+
+def get_movies(filepath):
+    """
+    Returns a dictionary of lists that
+    contains the movies information in the database.
+
+    The function loads the information from the JSON
+    file and returns the data.
+    """
+    try:
+        with open(filepath, 'r') as json_file:
+            movies = json.load(json_file)
+        return movies
+    except FileNotFoundError:
+        print('No data in database.')
+        return {}
+
+
+def save_movies(movies, filepath):
+    """
+    Gets all movies as an argument and saves them to the JSON file.
+    """
+    with open(filepath, 'w') as json_file:
+        json.dump(movies, json_file, indent=4)
+    print(f"Movies data has been saved to {filepath}")
 
 
 class StorageJson(IStorage):
@@ -49,7 +74,7 @@ class StorageJson(IStorage):
 
     def update_movie(self, title, rating):
         """
-        Updates a movie from the movies database.
+        Updates a movie from the movie database.
         Loads the dictionary from the JSON file, gets user input,
         updates the movie and saves it in JSON
         """
