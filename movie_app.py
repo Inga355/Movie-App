@@ -4,24 +4,47 @@ import random
 
 class MovieApp:
     def __init__(self, storage):
+        """
+        Initializes the MovieApp with a storage backend.
+        :param storage (StorageJson): An instance of the storage class.
+        """
         self._storage = storage
 
 
     def _command_list_movies(self):
+        """
+        Lists all movies stored in the database.
+        """
         return self._storage.list_movies()
 
     def _command_add_movie(self, title, rating, year):
+        """
+        Adds a new movie to the database.
+        :param title (str): The title of the movie.
+        :param rating (float): The rating of the movie.
+        :param year (int): The release year of the movie.
+        """
         self._storage.add_movie(title, rating, year)
 
     def _command_delete_movie(self, title):
+        """
+        Deletes a movie from the database.
+        :param title (str): The title of the movie to delete.
+        """
         self._storage.delete_movie(title)
 
     def _command_update_movie(self, title, rating):
+        """
+        Updates the rating of a existing movie.
+        :param title (str): The title of the movie to update.
+        :param rating (float): The new rating of the movie.
+        """
         self._storage.update_movie(title, rating)
 
     def _command_movie_stats(self):
         """
-        Displays statistics about the movies.
+        Displays statistics about the movies including average rating, median rating,
+        best and worst movies.
         """
         movies = get_movies(self._storage.file_path)
         print("")
@@ -51,7 +74,7 @@ class MovieApp:
 
     def _command_random_choice(self):
         """
-        Selects a random movie from the dictionary and displays its details.
+        Selects and displays a random movie from the database.
         """
         movies = get_movies(self._storage.file_path)
         keys_list = list(movies.keys())
@@ -64,6 +87,7 @@ class MovieApp:
     def _command_search_movie(self, search_term):
         """
         Searches for movies that contain the given search term in their title.
+        :param search_term (str): The search string to match against movie titles.
         """
         movies = get_movies(self._storage.file_path)
         search_term_lower = search_term.lower()
@@ -86,9 +110,15 @@ class MovieApp:
 
 
     def _generate_website(self):
+        """
+        Placeholder for future functionality to generate a website.
+        """
         pass
 
 
     def run(self):
+        """
+       Placeholder method to start the application.
+       """
         pass
 

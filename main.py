@@ -1,13 +1,11 @@
-import json
 from storage_json import StorageJson
 from movie_app import MovieApp
 
 
 
-# Display Menu and handle User-Input
 def print_menu():
     """
-    Prints the main menu options.
+    Prints the main menu options for the user.
     """
     print("")
     print("Menu:")
@@ -42,7 +40,8 @@ def get_main_choice():
 def handle_user_choice(choice, movie_app_instance):
     """
     Handles the user's choice from the main menu and calls the appropriate function.
-    :param choice: (int): The user's menu choice.
+    :param choice (int): The user's menu choice.
+    :param movie_app_instance (MovieApp): The movie app instance handling the operations.
     """
     if choice == 1:
         movie_app_instance._command_list_movies()
@@ -79,6 +78,7 @@ def main():
     print("********** My Movies Database **********")
     storage = StorageJson('movies.json')
     movie_app = MovieApp(storage)
+
     while True:
         print_menu()
         user_main_choice = get_main_choice()
