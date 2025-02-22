@@ -8,8 +8,6 @@ import requests
 
 # Load environment variables from .env file
 OMDB_API_KEY = os.getenv("OMDB_API_KEY")
-#OMDB_API_KEY = "319c869"
-
 OMDB_API_URL = "http://www.omdbapi.com/?apikey={}&t={}"
 
 
@@ -54,7 +52,6 @@ def fetch_movie_details(title):
     :param title (str): The title of the movie.
     :returns dict: A dictionary with movie details (title, year, rating, poster) or None if not found.
     """
-    print(OMDB_API_URL.format(OMDB_API_KEY, title))
     response = requests.get(OMDB_API_URL.format(OMDB_API_KEY, title))
     movie_data = response.json()
 
