@@ -1,42 +1,32 @@
 {
-    "The Shawshank Redemption": [
-        9.5,
-        1994
+    "Titanic": [
+        7.9,
+        1997,
+        "https://m.media-amazon.com/images/M/MV5BYzYyN2FiZmUtYWYzMy00MzViLWJkZTMtOGY1ZjgzNWMwN2YxXkEyXkFqcGc@._V1_SX300.jpg"
+    ],
+    "The Exorcist": [
+        8.1,
+        1973,
+        "https://m.media-amazon.com/images/M/MV5BZjg3YjE4ZjAtYTdmYS00ZTBkLWE1ZjgtNzAzODUwNzRiYjlmXkEyXkFqcGc@._V1_SX300.jpg"
+    ],
+    "The Color Purple": [
+        7.7,
+        1985,
+        "https://m.media-amazon.com/images/M/MV5BM2MyZjBlMGItNThkMi00YWExLThlZmUtZmI2MGM3YWE3YTY1XkEyXkFqcGc@._V1_SX300.jpg"
+    ],
+    "From Dusk Till Dawn": [
+        7.2,
+        1996,
+        "https://m.media-amazon.com/images/M/MV5BZGNjMWMwNWEtYTQ2YS00N2E5LTg5ZWYtMDgzM2UxMTE1ZTE4XkEyXkFqcGc@._V1_SX300.jpg"
     ],
     "Pulp Fiction": [
-        8.8,
-        1994
-    ],
-    "The Room": [
-        3.6,
-        2003
-    ],
-    "The Godfather": [
-        9.2,
-        1972
-    ],
-    "The Godfather: Part II": [
-        9,
-        1974
-    ],
-    "The Dark Knight": [
-        9,
-        2008
-    ],
-    "12 Angry Men": [
         8.9,
-        2022
-    ],
-    "Everything Everywhere All At Once": [
-        8.9,
-        1994
+        1994,
+        "https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_SX300.jpg"
     ],
     "Forrest Gump": [
         8.8,
-        1994
-    ],
-    "Star Wars: Episode V": [
-        8.7,
-        1980
+        1994,
+        "https://m.media-amazon.com/images/M/MV5BNDYwNzVjMTItZmU5YS00YjQ5LTljYjgtMjY2NDVmYWMyNWFmXkEyXkFqcGc@._V1_SX300.jpg"
     ]
 }
