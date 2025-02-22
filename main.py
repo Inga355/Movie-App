@@ -1,12 +1,15 @@
+from dotenv import load_dotenv
+import os
 from storage_csv import StorageCsv
 from storage_json import StorageJson
 from movie_app import MovieApp
 import requests
-import os
-from dotenv import load_dotenv
+
 
 # Load environment variables from .env file
 OMDB_API_KEY = os.getenv("OMDB_API_KEY")
+#OMDB_API_KEY = "319c869"
+
 OMDB_API_URL = "http://www.omdbapi.com/?apikey={}&t={}"
 
 
@@ -25,6 +28,7 @@ def print_menu():
     print("6. Random movie")
     print("7. Search movie")
     print("8. Movies sorted by rating")
+    print("9. Generate Website")
     print("")
 
 
@@ -50,6 +54,7 @@ def fetch_movie_details(title):
     :param title (str): The title of the movie.
     :returns dict: A dictionary with movie details (title, year, rating, poster) or None if not found.
     """
+    print(OMDB_API_URL.format(OMDB_API_KEY, title))
     response = requests.get(OMDB_API_URL.format(OMDB_API_KEY, title))
     movie_data = response.json()
 
@@ -96,6 +101,8 @@ def handle_user_choice(choice, movie_app_instance):
         movie_app_instance._command_search_movie(search_term)
     elif choice == 8:
         movie_app_instance._command_sorted_movies()
+    elif choice == 9:
+        movie_app_instance._command_generate_website()
     else:
         print("Wrong number, please choose again!")
 

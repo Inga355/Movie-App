@@ -1,5 +1,5 @@
 import random
-
+import os
 
 class MovieApp:
     def __init__(self, storage):
@@ -113,11 +113,39 @@ class MovieApp:
             print(f"{movie}: Rating: {details[0]}, Year: {details[1]}")
 
 
-    def _generate_website(self):
+    def _command_generate_website(self):
         """
-        Placeholder for future functionality to generate a website.
+        Generates an HTML page displaying all movies using an external template.
         """
-        pass
+        movies = self._storage.get_movies()
+        if not movies:
+            print("No movies available to generate a website.")
+            return
+
+        # Load HTML template from file
+        template_path = os.path.join("_static", "index_template.html")
+        try:
+            with open(template_path, "r", encoding="utf-8") as file:
+                html_template = file.read()
+        except FileNotFoundError:
+            print(f"Error: Template file not found at {template_path}")
+            return
+
+        movie_grid_items = ""
+        for title, details in movies.items():
+            movie_grid_items += "<li class='movie'>"
+            movie_grid_items += f"<img src='{details[2]}' alt='{title} poster' class='movie-poster'>"
+            movie_grid_items += f"<div class='movie-title'>{title}</div>"
+            movie_grid_items += f"<div class='movie-year'>{details[1]}</div>"
+            movie_grid_items += f"<div class='movie-info'>Rating: {details[0]}</div>"
+            movie_grid_items += "</li>"
+
+        html_content = html_template.replace("{movie_grid}", movie_grid_items)
+
+        with open("_static/index.html", "w", encoding="utf-8") as file:
+            file.write(html_content)
+
+        print("Website generated successfully: movies.html")
 
 
     def run(self):
