@@ -10,27 +10,23 @@ class StorageCsv(IStorage):
     def __init__(self, file_path):
         """
         Initializes the CSV storage with a file path.
-
-        Args:
-            file_path (str): The path to the CSV file used for storing movie data.
+        :param: file_path (str) The path to the CSV file used for storing movie data.
         """
         self.file_path = file_path
 
     def get_movies(self):
         """
         Loads movies from the CSV file and returns them as a dictionary.
-
-        Returns:
-            dict: A dictionary containing movie titles as keys and lists with rating and year as values.
+        :returns: dict: A dictionary containing movie titles as keys and lists with rating and year as values.
         """
         movies = {}
         try:
             with open(self.file_path, mode='r', newline='') as file:
                 reader = csv.reader(file)
                 for row in reader:
-                    if len(row) == 3:
-                        title, rating, year = row
-                        movies[title] = [float(rating), int(year)]
+                    if len(row) == 4:
+                        title, rating, year, poster = row
+                        movies[title] = [float(rating), int(year), str(poster)]
         except FileNotFoundError:
             print("No data in database.")
         return movies
@@ -38,14 +34,12 @@ class StorageCsv(IStorage):
     def save_movies(self, movies):
         """
         Saves the given movie dictionary to a CSV file.
-
-        Args:
-            movies (dict): The dictionary containing movie data.
+        :param: movies (dict) The dictionary containing movie data.
         """
         with open(self.file_path, mode='w', newline='') as file:
             writer = csv.writer(file)
             for title, details in movies.items():
-                writer.writerow([title, details[0], details[1]])
+                writer.writerow([title, details[0], details[1], details[2]])
         print(f"Movies data has been saved to {self.file_path}")
 
     def list_movies(self):
@@ -58,26 +52,23 @@ class StorageCsv(IStorage):
         for key, value in movies.items():
             print(f"{key} ({value[1]}): {value[0]}")
 
-    def add_movie(self, title, year, rating):
+    def add_movie(self, title, year, rating, poster):
         """
         Adds a movie to the database and saves the updated data to the CSV file.
 
-        Args:
-            title (str): The title of the movie.
-            year (int): The release year of the movie.
-            rating (float): The rating of the movie.
+        :param: title (str) he title of the movie.
+        :param: year (int) The release year of the movie.
+        :param: rating (float) The rating of the movie.
         """
         movies = self.get_movies()
-        movies[title] = [rating, year]
+        movies[title] = [rating, year, poster]
         self.save_movies(movies)
         print(f"The movie '{title}' has been added to the database.")
 
     def delete_movie(self, title):
         """
         Deletes a movie from the database and saves the updated data.
-
-        Args:
-            title (str): The title of the movie to delete.
+        :param: title (str) The title of the movie to delete.
         """
         movies = self.get_movies()
         if title in movies:
@@ -90,10 +81,8 @@ class StorageCsv(IStorage):
     def update_movie(self, title, rating):
         """
         Updates the rating of a movie and saves the updated data.
-
-        Args:
-            title (str): The title of the movie to update.
-            rating (float): The new rating for the movie.
+        :param: title (str) The title of the movie to update.
+        :param: rating (float) The new rating for the movie.
         """
         movies = self.get_movies()
         if title in movies:

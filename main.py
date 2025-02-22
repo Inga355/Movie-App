@@ -1,5 +1,13 @@
 from storage_csv import StorageCsv
+from storage_json import StorageJson
 from movie_app import MovieApp
+import requests
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+OMDB_API_KEY = os.getenv("OMDB_API_KEY")
+OMDB_API_URL = "http://www.omdbapi.com/?apikey={}&t={}"
 
 
 def print_menu():
@@ -36,6 +44,26 @@ def get_main_choice():
             print("Invalid input. Please enter a number between 0 and 10!")
 
 
+def fetch_movie_details(title):
+    """
+    Fetches movie details from OMDb API.
+    :param title (str): The title of the movie.
+    :returns dict: A dictionary with movie details (title, year, rating, poster) or None if not found.
+    """
+    response = requests.get(OMDB_API_URL.format(OMDB_API_KEY, title))
+    movie_data = response.json()
+
+    if movie_data.get("Response") == "True":
+        return {
+            "Title": movie_data["Title"],
+            "Year": int(movie_data["Year"]),
+            "Rating": float(movie_data["imdbRating"]) if movie_data["imdbRating"] != "N/A" else 0.0,
+            "Poster": movie_data["Poster"]
+        }
+    else:
+        return None
+
+
 def handle_user_choice(choice, movie_app_instance):
     """
     Handles the user's choice from the main menu and calls the appropriate function.
@@ -46,9 +74,12 @@ def handle_user_choice(choice, movie_app_instance):
         movie_app_instance._command_list_movies()
     elif choice == 2:
         title = input("Please enter a movie name: ")
-        rating = float(input("Please enter the movie's rating: "))
-        year = int(input("Please enter the year of release: "))
-        movie_app_instance._command_add_movie(title, year, rating)
+        movie_details = fetch_movie_details(title)
+        if movie_details:
+            movie_app_instance._command_add_movie(
+                movie_details["Title"], movie_details["Year"], movie_details["Rating"], movie_details["Poster"])
+        else:
+            print("Error: Movie not found in OMDb API.")
     elif choice == 3:
         title = input("Please enter the name of the movie you want to delete: ")
         movie_app_instance._command_delete_movie(title)
@@ -75,7 +106,7 @@ def main():
     Initializes and runs the MovieApp.
     """
     print("********** My Movies Database **********")
-    storage = StorageCsv('movies.csv')
+    storage = StorageJson('movies.json')
     movie_app = MovieApp(storage)
     movie_app.run()
 

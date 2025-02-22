@@ -2,12 +2,15 @@ from abc import ABC, abstractmethod
 
 
 class IStorage(ABC):
+    """
+    Abstract class to handle movie storing for diffrent file formats
+    """
     @abstractmethod
     def list_movies(self):
         pass
 
     @abstractmethod
-    def add_movie(self, title, year, rating):
+    def add_movie(self, title, year, rating, poster):
         pass
 
     @abstractmethod

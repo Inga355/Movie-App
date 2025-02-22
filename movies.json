@@ -38,5 +38,15 @@
     "Star Wars: Episode V": [
         8.7,
         1980
+    ],
+    "Titanic": [
+        7.9,
+        1997,
+        "https://m.media-amazon.com/images/M/MV5BYzYyN2FiZmUtYWYzMy00MzViLWJkZTMtOGY1ZjgzNWMwN2YxXkEyXkFqcGc@._V1_SX300.jpg"
+    ],
+    "The Exorcist": [
+        8.1,
+        1973,
+        "https://m.media-amazon.com/images/M/MV5BZjg3YjE4ZjAtYTdmYS00ZTBkLWE1ZjgtNzAzODUwNzRiYjlmXkEyXkFqcGc@._V1_SX300.jpg"
     ]
 }

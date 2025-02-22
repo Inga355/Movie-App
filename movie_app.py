@@ -16,14 +16,15 @@ class MovieApp:
         """
         return self._storage.list_movies()
 
-    def _command_add_movie(self, title, rating, year):
+    def _command_add_movie(self, title, rating, year, poster):
         """
         Adds a new movie to the database.
         :param title (str): The title of the movie.
         :param rating (float): The rating of the movie.
         :param year (int): The release year of the movie.
+        :param poster (str): URL to OMDbAPI to display the poster image.
         """
-        self._storage.add_movie(title, rating, year)
+        self._storage.add_movie(title, rating, year, poster)
 
     def _command_delete_movie(self, title):
         """
