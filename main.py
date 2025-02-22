@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import os
-from storage_csv import StorageCsv
-from storage_json import StorageJson
+from storage.storage_json import StorageJson
+from storage.storage_csv import StorageCsv
 from movie_app import MovieApp
 import requests
 
@@ -110,7 +110,7 @@ def main():
     Initializes and runs the MovieApp.
     """
     print("********** My Movies Database **********")
-    storage = StorageJson('movies.json')
+    storage = StorageCsv('data/movies.csv')
     movie_app = MovieApp(storage)
     movie_app.run()
 
